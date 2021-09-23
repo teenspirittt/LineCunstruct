@@ -3,6 +3,9 @@
 #include <QWidget>
 
 class Lines : public QWidget {
+ private:
+  int height;
+  int width;
 
  public:
   Lines(QWidget *parent = 0);

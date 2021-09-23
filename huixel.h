@@ -1,8 +1,18 @@
-//
-// Created by vladi on 23.09.2021.
-//
+#pragma once
 
-#ifndef GRAFIC_LAB1__HUIXEL_H_
-#define GRAFIC_LAB1__HUIXEL_H_
+#include <QWidget>
 
-#endif //GRAFIC_LAB1__HUIXEL_H_
+int sign(int a);
+
+class Rectangle : public QWidget {
+
+ public:
+  Rectangle(QWidget *parent = 0);
+  void Bresenham(int x0, int y0, int x1, int y1, QPainter *qp);
+  void pixel(int x, int y, QPainter *qp);
+  void DDA(int x0, int y0, int x1, int y1, QPainter *qp);
+ protected:
+  void paintEvent(QPaintEvent *event);
+  void drawRectangle(QPainter *qp);
+};
+
