@@ -14,7 +14,7 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(grafic_lab1 main.cpp lines.cpp lines.h)
+add_executable(grafic_lab1 main.cpp lines.cpp lines.h huixel.cpp huixel.h)
 target_link_libraries(grafic_lab1
         Qt5::Core
         Qt5::Gui

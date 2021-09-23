@@ -2,8 +2,7 @@
 #include "lines.h"
 
 Lines::Lines(QWidget *parent)
-    : QWidget(parent)
-{ }
+    : QWidget(parent) {}
 
 void Lines::paintEvent(QPaintEvent *e) {
 
@@ -13,19 +12,15 @@ void Lines::paintEvent(QPaintEvent *e) {
   drawLines(&qp);
 }
 
+
+
 void Lines::drawLines(QPainter *qp) {
 
   QPen pen(Qt::black, 2, Qt::SolidLine);
   qp->setPen(pen);
-  for (int i = 0; i < 800; i+=40) {
+  for (int i = 0; i < 800; i += 40) {
     qp->drawLine(0, 0 + i, 800, 0 + i);
-    qp->drawLine(0 + i, 0 , 0 + i, 800 );
+    qp->drawLine(0 + i, 0, 0 + i, 800);
   }
-
-
-
-
-
-
 
 }

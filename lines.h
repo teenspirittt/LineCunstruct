@@ -11,3 +11,4 @@ class Lines : public QWidget {
   void paintEvent(QPaintEvent *event);
   void drawLines(QPainter *qp);
 };
+
