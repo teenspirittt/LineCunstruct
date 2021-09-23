@@ -1,6 +1,6 @@
 #include <QApplication>
-#include "lines.h"
-#include "huixel.h"
+#include "Lines.h"
+#include "Rectangle.h"
 #include <QVBoxLayout>
 
 int main(int argc, char *argv[]) {
@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
   layout->addWidget(rec);
 
   window->resize(800, 800);
-  window->setWindowTitle("Lines");
+  window->setWindowTitle("Vectors");
   window->show();
 
   return app.exec();

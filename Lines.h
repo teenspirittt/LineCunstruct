@@ -2,6 +2,8 @@
 
 #include <QWidget>
 
+
+#define CELL 25
 class Lines : public QWidget {
  private:
   int height;

@@ -1,7 +1,8 @@
 
-#include "huixel.h"
+#include "Rectangle.h"
 #include <QPainter>
 #include <cmath>
+#include "Lines.h"
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
@@ -22,28 +23,47 @@ Rectangle::Rectangle(QWidget *parent)
 void Rectangle::paintEvent(QPaintEvent *e) {
   Q_UNUSED(e);
   QPainter qp(this);
-  Bresenham(20, 1000, 600, 670, &qp);
+  Bresenham(33 * CELL, 33 * CELL, 5 * CELL, 8 * CELL, &qp);
+
+  DDA(33 * CELL, 33 * CELL, 5 * CELL, 8 * CELL, &qp);
 }
 
-void Rectangle::pixel(int x, int y, QPainter *qp) {
+void Rectangle::pixel(int x, int y, QPainter *qp, QColor c) {
   int xx, yy;
   for (int i = 0; i < 800; ++i) {
-    if (x >= 40 * i && x < 40 * (i + 1)) {
-      xx = 40 * i;
+    if (x >= CELL * i && x < CELL * (i + 1)) {
+      xx = CELL * i;
 
     }
-    if (y >= 40 * i && x < 40 * (i + 1)) {
-      yy = 40 * i;
+    if (y >= CELL * i && x < 40 * (CELL + 1)) {
+      yy = CELL * i;
     }
   }
 
   this->setGeometry(0, 0, 800, 800);
-  qp->fillRect(xx, yy, 40, 40, Qt::darkRed);
+  qp->fillRect(xx, yy, CELL, CELL, c);
 
 }
 
-void
+void Rectangle::DDA(int x0, int y0, int x1, int y1, QPainter *qp) {
 
+  //приращения
+  double dx = x1 - x0, dy = y1 - y0;
+  QColor bich(240, 10, 80, 10);
+  double N = MAX(fabs(dx), fabs(dy)); // число шагов построения
+  double x = x0, y = y0;
+  pixel(x, y, qp, bich);
+  for (int k = 0; k < N; k++) {
+    if (fabs(dx) >= fabs(dy)) {
+      x = x + dx / N;
+      y = y + (dy / fabs(dx));
+    } else if (fabs(dx) < fabs(dy)) {
+      x = x + (dx / fabs(dy));
+      y = y + dy / N;
+    }
+    pixel(floor(x), floor(y), qp, bich);
+  }
+}
 
 void Rectangle::Bresenham(int x0, int y0, int x1, int y1, QPainter *qp) {
 
@@ -58,7 +78,7 @@ void Rectangle::Bresenham(int x0, int y0, int x1, int y1, QPainter *qp) {
     E = fabs(dx / dy) - 0.5;
   }
 
-  pixel(x, y, qp);
+  pixel(x, y, qp, Qt::darkGreen);
   for (int i = 0; i < N; i++) {
     if (fabs(dx) > fabs(dy)) {
       x += (dx / N);
@@ -77,7 +97,7 @@ void Rectangle::Bresenham(int x0, int y0, int x1, int y1, QPainter *qp) {
         E += fabs(dx / dy);
       }
     }
-    pixel(x, y, qp);
+    pixel(x, y, qp, Qt::darkGreen);
   }
 
 }
