@@ -1,8 +1,13 @@
-//
-// Created by vladi on 23.09.2021.
-//
+#pragma once
 
-#ifndef GRAFIC_LAB1__LINES_H_
-#define GRAFIC_LAB1__LINES_H_
+#include <QWidget>
 
-#endif //GRAFIC_LAB1__LINES_H_
+class Lines : public QWidget {
+
+ public:
+  Lines(QWidget *parent = 0);
+
+ protected:
+  void paintEvent(QPaintEvent *event);
+  void drawLines(QPainter *qp);
+};
