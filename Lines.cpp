@@ -22,4 +22,11 @@ QWidget::setFixedSize(height, width);
     qp->drawLine(0, 0 + i, 800, 0 + i);
     qp->drawLine(0 + i, 0, 0 + i, 800);
   }
+
+  QPen pen1 (Qt::darkRed, 2, Qt::SolidLine);
+  qp-> setPen(pen1);
+  qp->drawLine(400,0,400, 800);
+  qp->drawLine(0,400,800, 400);
+
+
 }

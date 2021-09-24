@@ -14,7 +14,7 @@ find_package(Qt5 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(grafic_lab1 main.cpp Lines.cpp Lines.h Rectangle.cpp Rectangle.h StartDialog.cpp StartDialog.h)
+add_executable(grafic_lab1 main.cpp Lines.cpp Lines.h Rectangle.cpp Rectangle.h)
 target_link_libraries(grafic_lab1
         Qt5::Core
         Qt5::Gui

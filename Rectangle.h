@@ -2,11 +2,9 @@
 
 #include <QWidget>
 
-
-
 int sign(int a);
 class Rectangle : public QWidget {
-
+ Q_OBJECT
  public:
   Rectangle(QWidget *parent = 0);
   void Bresenham(int x0, int y0, int x1, int y1, QPainter *qp);
