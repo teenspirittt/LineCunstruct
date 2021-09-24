@@ -1,10 +1,8 @@
-
 #include "Rectangle.h"
 #include <QPainter>
 #include <cmath>
 #include "Lines.h"
 #include <QTimer>
-
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 const int x_start = 0;
@@ -32,9 +30,9 @@ void Rectangle::paintEvent(QPaintEvent *e) {
   qp.translate(400, 400);
   qp.scale(1, -1);
   //qp.setWindow(QRect(-400, -400, 800, 800));
-  Bresenham(x_start, y_start, x_end, y_end, &qp);
-  QTimer::singleShot(3000, this,)
   DDA(x_start, y_start, x_end, y_end, &qp);
+  QTimer::singleShot(3000, this,SLOT(Bresenham(x_start, y_start, x_end, y_end, &qp)));
+
 
 }
 
