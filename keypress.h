@@ -1,12 +1,18 @@
 #pragma once
 
-#include <QWidget>
+#include <QThread>
 
-class KeyPress : public QWidget {
+
+class Sleeper : public QThread
+
+{
 
  public:
-  KeyPress(QWidget *parent = 0);
 
- protected:
-  void keyPressEvent(QKeyEvent * e);
+  static void usleep(unsigned long usecs){QThread::usleep(usecs);}
+
+  static void msleep(unsigned long msecs){QThread::msleep(msecs);}
+
+  static void sleep(unsigned long secs){QThread::sleep(secs);}
+
 };
